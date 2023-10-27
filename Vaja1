@@ -1,0 +1,19 @@
+void setup() {
+  Serial.begin(9600);
+  pinMode(2,OUTPUT);// put your setup code here, to run once:
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println(getTemp(analogRead(A1)));
+  float temp = getTemp(analogRead(A1));
+  if(temp >= 32.6){
+  digitalWrite(2,HIGH);
+  }
+  else{digitalWrite(2,LOW);}
+}
+
+float getTemp(int adc){
+  return ((((adc/1023.00)*5000-500)/10)-4); 
+}
